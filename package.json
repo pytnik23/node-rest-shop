@@ -4,6 +4,7 @@
     "description": "Simple shop API",
     "main": "index.js",
     "scripts": {
+        "start": "nodemon ./server.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
@@ -12,8 +13,16 @@
         "api"
     ],
     "author": "Oleksii Teplenko",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pytnik23/node-rest-shop.git"
+    },
     "license": "ISC",
     "dependencies": {
-        "express": "^4.16.2"
+        "express": "^4.16.2",
+        "morgan": "^1.9.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.17.1"
     }
 }
