@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const baseUrl = require('../../constants').BASE_URL;
 
 const Product = require('../models/product');
 
@@ -16,7 +17,7 @@ exports.get_all_products = async (req, res, next) => {
                     productImage: item.productImage,
                     request: {
                         type: 'GET',
-                        url: 'http://localhost:3000/products/' + item._id,
+                        url: `${baseUrl}/products/${item._id}`,
                     },
                 };
             }),
@@ -48,7 +49,7 @@ exports.create_product = async (req, res, next) => {
                 _id: result._id,
                 request: {
                     type: 'GET',
-                    url: 'http://localhost:3000/products/' + result._id,
+                    url: `${baseUrl}/products/${result._id}`,
                 },
             },
         });
@@ -68,7 +69,7 @@ exports.get_product = async (req, res, next) => {
                 product: result,
                 request: {
                     type: 'GET',
-                    url: 'http://localhost:3000/products',
+                    url: `${baseUrl}/products`,
                 }
             });
         } else {
@@ -90,7 +91,7 @@ exports.update_product = async (req, res, next) => {
             message: `Product with id: ${id} have been updated`,
             request: {
                 type: 'GET',
-                url: 'http://localhost:3000/products/' + id,
+                url: `${baseUrl}/products/${id}`,
             },
         });
     } catch (e) {
@@ -111,7 +112,7 @@ exports.delete_product = async (req, res, next) => {
             message: `Product with id:${id} have been deleted`,
             request: {
                 type: 'POST',
-                url: 'http://localhost:3000/products/',
+                url: `${baseUrl}/products`,
                 body: {
                     name: 'String',
                     price: 'Number',

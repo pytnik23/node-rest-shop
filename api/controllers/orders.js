@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const baseUrl = require('../../constants').BASE_URL;
 
 const Order = require('../models/order');
 const Product = require('../models/product');
@@ -18,7 +19,7 @@ exports.get_all_orders = async (req, res, next) => {
                     product: item.product,
                     request: {
                         type: 'GET',
-                        url: 'http://localhost:3000/orders/' + item._id,
+                        url: `${baseUrl}/orders/${item._id}`,
                     },
                 };
             }),
@@ -56,7 +57,7 @@ exports.create_order = async (req, res, next) => {
             },
             request: {
                 type: 'GET',
-                url: 'http://localhost:3000/orders/' + result._id,
+                url: `${baseUrl}/orders/${result._id}`,
             },
         });
     } catch (e) {
@@ -80,7 +81,7 @@ exports.get_order = async (req, res, next) => {
             order,
             request: {
                 type: 'GET',
-                url: 'http://localhost:3000/orders',
+                url: `${baseUrl}/orders`,
             }
         });
     } catch (e) {
@@ -101,7 +102,7 @@ exports.delete_order = async (req, res, next) => {
             message: `Order with id:${id} have been deleted`,
             request: {
                 type: 'POST',
-                url: 'http://localhost:3000/orders',
+                url: `${baseUrl}/orders`,
                 body: {
                     productId: 'ID',
                     quantity: 'Number',
